@@ -171,7 +171,7 @@ async function runConversion(src: string): Promise<string> {
   }
   const result = await convert({
     baseUrl: c.get<string>('baseUrl', 'https://api.openai.com/v1'),
-    model: c.get<string>('model', 'gpt-4o-mini'),
+    model: c.get<string>('model', 'gpt-5.4-mini'),
     prompt: c.get<string>('prompt', ''),
     src,
     key,
