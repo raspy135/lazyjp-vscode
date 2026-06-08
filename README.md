@@ -21,24 +21,6 @@ either:
 
 Then reload/restart VS Code.
 
-### Build the `.vsix` yourself
-
-`build-vsix.sh` assembles the `.vsix` by hand (compile → stage → generate the OPC
-manifests → zip) with **no `vsce` and no Node version requirement** — it runs fine
-on the Node 12 in this workspace:
-
-```
-./build-vsix.sh
-```
-
-It reads `name`/`version`/`publisher`/`engine`/`extensionKind` from `package.json`,
-so bumping the version there and re-running produces a correctly-named package
-automatically.
-
-> Note: the hand-built package skips the validation `vsce` normally performs (icon,
-> repository, etc.). It installs fine locally, but to publish to the Marketplace use
-> a real `vsce package` on Node ≥20.
-
 ### From source (dev)
 
 ```
