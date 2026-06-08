@@ -8,17 +8,50 @@ replaced in place with `今日はいい天気です`. The request runs in the ba
 you can keep editing; the result lands on the **original** line even if the cursor
 (or line numbers) moved while you waited.
 
-## Setup
+## Install
 
-1. Install [Node.js](https://nodejs.org) (LTS) if you don't have it.
-2. In a terminal, run:
-   ```
-   npm install
-   npm run install-ext
-   ```
-3. Reload VS Code when prompted.
-4. Run **`lazyjp: Set API Key`** from the Command Palette and paste your OpenAI key
-   (stored in VS Code SecretStorage, not in settings).
+### From the prebuilt `.vsix` (easiest)
+
+A packaged `lazyjp-<version>.vsix` is included in the repo root. Install it with
+either:
+
+- **GUI:** Extensions view → `…` menu (top-right) → **Install from VSIX…** → pick
+  the file.
+- **CLI:** `code --install-extension lazyjp-0.1.0.vsix`
+
+Then reload/restart VS Code.
+
+### Build the `.vsix` yourself
+
+`build-vsix.sh` assembles the `.vsix` by hand (compile → stage → generate the OPC
+manifests → zip) with **no `vsce` and no Node version requirement** — it runs fine
+on the Node 12 in this workspace:
+
+```
+./build-vsix.sh
+```
+
+It reads `name`/`version`/`publisher`/`engine`/`extensionKind` from `package.json`,
+so bumping the version there and re-running produces a correctly-named package
+automatically.
+
+> Note: the hand-built package skips the validation `vsce` normally performs (icon,
+> repository, etc.). It installs fine locally, but to publish to the Marketplace use
+> a real `vsce package` on Node ≥20.
+
+### From source (dev)
+
+```
+npm install
+npm run compile   # or `npm run watch`
+```
+Press **F5** to launch the Extension Development Host, or `npm run package` to build
+a `.vsix` via `vsce` (requires Node ≥20).
+
+### After installing
+
+Run **`lazyjp: Set API Key`** from the Command Palette and paste your OpenAI key
+(stored in VS Code SecretStorage, not in settings).
 
 
 ## Usage
