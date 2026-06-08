@@ -1,0 +1,95 @@
+{
+  "name": "lazyjp",
+  "displayName": "lazyjp",
+  "description": "Rewrite the current line of romaji-ish text into natural Japanese with an LLM, in the background.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raspb/lazyjp-vscode"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "extensionKind": ["ui", "workspace"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "lazyjp.convertLine",
+        "title": "lazyjp: Convert Line to Japanese"
+      },
+      {
+        "command": "lazyjp.toggleContinuous",
+        "title": "lazyjp: Toggle Continuous Mode"
+      },
+      {
+        "command": "lazyjp.resetSession",
+        "title": "lazyjp: Reset Session"
+      },
+      {
+        "command": "lazyjp.setApiKey",
+        "title": "lazyjp: Set API Key"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "lazyjp.convertLine",
+        "key": "ctrl+alt+j",
+        "mac": "cmd+alt+j",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "lazyjp",
+      "properties": {
+        "lazyjp.model": {
+          "type": "string",
+          "default": "gpt-4o-mini",
+          "description": "Model id passed to the Responses API. Must be valid for your key / base URL."
+        },
+        "lazyjp.baseUrl": {
+          "type": "string",
+          "default": "https://api.openai.com/v1",
+          "description": "API base URL. Point this at a proxy if your model id is served elsewhere."
+        },
+        "lazyjp.prompt": {
+          "type": "string",
+          "editPresentation": "multilineText",
+          "default": "Convert following romaji-ish text Japanese text. Just print the result, do not add extra chars. Convert '[]' as '「」' because your response will be used as the result of lazy-japanese IME. Use Kanji as needed, for natural Japanse text. Do not delete marker such as '-' or '#' at the beginning of the line, it would be Markdown syntax. Return answer fast. Guess and fix if you see mistakes. If the sentence starts with /rule then it means the following text talks about additional rules of the conversion. return 'Understood' in the case, to show you recognized the sentence was additional rule. Back to normal conversion mode:\n\n",
+          "description": "System/instruction text prepended to the line being converted."
+        },
+        "lazyjp.continuous": {
+          "type": "boolean",
+          "default": true,
+          "description": "Start in continuous (conversation) mode: chain turns for consistent kanji/vocabulary at the cost of many more tokens. Toggle at runtime with 'lazyjp: Toggle Continuous Mode'."
+        },
+        "lazyjp.reasoningEffort": {
+          "type": "string",
+          "enum": ["", "low", "medium", "high"],
+          "default": "",
+          "description": "Reasoning effort, sent only for reasoning models. Leave empty to omit (non-reasoning models reject it)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npx @vscode/vsce package",
+    "install-ext": "npm run package && code --install-extension lazyjp-0.1.0.vsix"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.0",
+    "@types/vscode": "^1.75.0",
+    "typescript": "~4.9.5"
+  }
+}
