@@ -68,7 +68,7 @@
         },
         "lazyjp.continuous": {
           "type": "boolean",
-          "default": true,
+          "default": false,
           "description": "Start in continuous (conversation) mode: chain turns for consistent kanji/vocabulary at the cost of many more tokens. Toggle at runtime with 'lazyjp: Toggle Continuous Mode'."
         },
         "lazyjp.reasoningEffort": {

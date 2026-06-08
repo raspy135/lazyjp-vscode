@@ -20,10 +20,6 @@ you can keep editing; the result lands on the **original** line even if the curs
 4. Run **`lazyjp: Set API Key`** from the Command Palette and paste your OpenAI key
    (stored in VS Code SecretStorage, not in settings).
 
-### Development
-
-Run `npm run watch` to recompile on every save, then use **Reload Window**
-(`Ctrl+Shift+P` → "Reload Window") to pick up changes without restarting VS Code.
 
 ## Usage
 
@@ -49,8 +45,9 @@ Rebind the shortcut via **Preferences: Open Keyboard Shortcuts** and searching f
 
 ## Continuous mode
 
-Off (default): every line is an independent, cheap one-shot. On: each conversion
-chains to the previous one via the Responses API's `previous_response_id`, so the
+Off (default): every line is an independent, cheap one-shot. 
+
+On: each conversion chains to the previous one via the Responses API's `previous_response_id`, so the
 model keeps consistent vocabulary/kanji across lines — at the cost of many more
 tokens as context grows. A fresh chat starts when you switch files, toggle the mode
 on, or run *Reset Session*.

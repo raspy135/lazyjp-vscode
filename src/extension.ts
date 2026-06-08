@@ -19,7 +19,7 @@ interface Pending {
 
 // --- module state (safe as plain vars: single-threaded event loop) ---
 let secrets: vscode.SecretStorage;
-let continuous = true;
+let continuous = false;
 let previousResponseId: string | undefined;
 let lastFileKey: string | undefined;
 const pending: Pending[] = [];
