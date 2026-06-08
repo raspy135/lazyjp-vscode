@@ -52,7 +52,7 @@
       "properties": {
         "lazyjp.model": {
           "type": "string",
-          "default": "gpt-4o-mini",
+          "default": "gpt-5.4-mini",
           "description": "Model id passed to the Responses API. Must be valid for your key / base URL."
         },
         "lazyjp.baseUrl": {

@@ -39,7 +39,7 @@ Rebind the shortcut via **Preferences: Open Keyboard Shortcuts** and searching f
 
 ## Settings
 
-- `lazyjp.model` — model id (default `gpt-4o-mini`). Must be valid for your key.
+- `lazyjp.model` — model id (default `gpt-5.4-mini`). Must be valid for your key.
 - `lazyjp.baseUrl` — API base URL (default `https://api.openai.com/v1`). Point at a
   proxy if your model id is served elsewhere.
 - `lazyjp.prompt` — the instruction text prepended to the line.
