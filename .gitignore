@@ -1,4 +1,5 @@
+# Note: *.vsix is intentionally NOT ignored — the prebuilt package is committed
+# so users who can't build it can download and install it directly.
 node_modules/
 out/
-*.vsix
 .vscode-test/

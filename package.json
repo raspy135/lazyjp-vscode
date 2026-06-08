@@ -2,7 +2,7 @@
   "name": "lazyjp",
   "displayName": "lazyjp",
   "description": "Rewrite the current line of romaji-ish text into natural Japanese with an LLM, in the background.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "local",
   "license": "MIT",
   "repository": {
@@ -85,7 +85,7 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "package": "npx @vscode/vsce package",
-    "install-ext": "npm run package && code --install-extension lazyjp-0.1.0.vsix"
+    "install-ext": "npm run package && code --install-extension lazyjp-0.1.1.vsix"
   },
   "devDependencies": {
     "@types/node": "^16.18.0",

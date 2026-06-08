@@ -17,7 +17,7 @@ either:
 
 - **GUI:** Extensions view → `…` menu (top-right) → **Install from VSIX…** → pick
   the file.
-- **CLI:** `code --install-extension lazyjp-0.1.0.vsix`
+- **CLI:** `code --install-extension lazyjp-x-x-x.vsix`
 
 Then reload/restart VS Code.
 
